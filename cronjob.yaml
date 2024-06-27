@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-parser-job
+spec:
+  schedule: "*/15 * * * *" # This is a sample schedule. Adjust as needed.
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron-parser
+              image: us.dcr.io/cron-parser:latest
+              args:
+                - "*/15 0 1,15 * 1-5 /usr/bin/find" # The cron string argument
+          restartPolicy: OnFailure

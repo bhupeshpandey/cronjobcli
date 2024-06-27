@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  cron-parser:
+    build: .
+    container_name: cron-parser
+    command: "*/15 0 1,15 * 1-5 /usr/bin/find"
