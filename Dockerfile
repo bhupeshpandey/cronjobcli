@@ -1,5 +1,5 @@
-# Use the official Golang image as the base image
-FROM golang:1.20-alpine
+# Use the official Golang 1.22 image as the base image
+FROM golang:1.22-alpine
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -19,5 +19,5 @@ RUN go build -o cron-parser .
 # Expose port 8080 to the outside world (if you need to run as a service)
 # EXPOSE 8080
 
-# Command to run the executable
-CMD ["./cron-parser"]
+# Command to run the executable with arguments
+ENTRYPOINT ["./cron-parser"]
